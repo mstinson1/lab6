@@ -51,9 +51,15 @@ app.get("/quote/edit", async function(req, res){
     let authorSql = `SELECT *
                     FROM q_authors
                     ORDER BY lastName`;
+
+    let categorySql = `SELECT DISTINCT category
+                       FROM q_quotes
+                       ORDER BY category`;
+                       
     const [quoteRows] = await pool.query(quoteSql);
     const [authorRows] = await pool.query(authorSql);
-    res.render("editQuote", {quoteInfo : quoteRows, authors: authorRows});
+    const [categoryRows] = await pool.query(categorySql);
+    res.render("editQuote", {quoteInfo : quoteRows, authors: authorRows, categories: categoryRows});
 });
 
 app.post("/quote/edit", async function(req, res){
@@ -69,11 +75,21 @@ app.post("/quote/edit", async function(req, res){
 })
 
 app.get("/quote/new", async function(req, res){
-    let sql = `SELECT *
-                FROM q_authors
-                ORDER BY lastName`;
-    const [rows] = await pool.query(sql);
-    res.render("newQuote", {authors: rows});
+    let authorSql = `SELECT *
+                     FROM q_authors
+                     ORDER BY lastName`;
+
+    let categorySql = `SELECT DISTINCT category
+                       FROM q_quotes
+                       ORDER BY category`;
+
+    const [authorRows] = await pool.query(authorSql);
+    const [categoryRows] = await pool.query(categorySql);
+
+    res.render("newQuote", {
+        authors: authorRows,
+        categories: categoryRows
+    });
 });
 
 app.post("/quote/new", async function(req,res){

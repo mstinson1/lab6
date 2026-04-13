@@ -5,7 +5,7 @@
         <div class="pageCard">
         <h1>Updating Quote Data</h1>
         <hr>
-        <form method="POST" action="/quote/edit">
+        <form method="POST" action="/quote/edit" class="formSimple">
             <input type="hidden" name="quoteId" value="<%=quoteInfo[0].quoteId%>">
 
             Quote:
@@ -27,7 +27,16 @@
             <br>
 
             Category:
-            <input type="text" name="category" value="<%=quoteInfo[0].category%>">
+            <select name="category">
+            <% for (let i = 0; i < categories.length; i++) { %>
+                <option value="<%= categories[i].category %>"
+                <% if (categories[i].category == quoteInfo[0].category) { %>
+                    selected
+                <% } %>>
+                <%= categories[i].category %>
+                </option>
+            <% } %>
+            </select>
             <br>
 
             Likes:
