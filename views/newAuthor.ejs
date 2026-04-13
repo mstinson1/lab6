@@ -1,0 +1,39 @@
+<%- include("partials/header.ejs") %>
+<%- include("partials/nav.ejs") %>
+<main>
+  <div class="pageCard">
+  <h1>Adding a New Author</h1>
+  <hr>
+      <% if (typeof message != "undefined"){ %>
+              <h3><%=message%></h3>
+      <% } %>
+
+      <form method="POST" action="/author/new" class="formSimple">
+        First Name:
+        <input type="text" name="fName"><br>
+        Last Name:
+        <input type="text" name="lName"><br>
+        Date of Birth:
+        <input type="date" name="birthDate"><br>
+        Date of Death:
+        <input type="date" name="deathDate"><br>
+        Sex:
+        <select name="sex">
+          <option value="">-- Select --</option>
+          <option value="M">Male</option>
+          <option value="F">Female</option>
+        </select><br>
+        Profession:
+        <input type="text" name="profession"><br>
+        Country:
+        <input type="text" name="country"><br>
+        Portrait URL:
+        <input type="url" name="portrait"><br>
+        Biography:
+        <textarea name="biography" maxlength="1000"></textarea>
+        <br>  
+        <button>Add Author</button>
+      </form>
+  </div>
+  <%- include("partials/footer.ejs") %>
+</main>

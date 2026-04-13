@@ -1,0 +1,39 @@
+<%- include("partials/header.ejs") %>
+<%- include("partials/nav.ejs") %>
+<body>
+  <main>
+      <div class="pageCard">
+        <h1> Famous Quotes - Admin Section </h1>
+        <hr>
+        <div class="cardContainer">
+          <div class="displayCard">
+            <form action="/authors">
+            <button><i class="fa fa-users"></i> Display Authors</button>
+            </form>
+          </div>
+
+          <div class="addCard">
+            <form action="/author/new">
+              <button><i class="fa fa-user-plus"></i> Add Authors</button>
+            </form>
+          </div> 
+
+          <div class="displayCard">
+            <form action="/quotes">
+              <button><i class="fa fa-quote-left"></i> Display Quotes</button>
+            </form>
+          </div>
+
+          <div class="addCard">
+            <form action="/quote/new">
+              <button><i class="fa fa-plus-circle"></i> Add Quotes</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+<%- include("partials/footer.ejs") %>
+  </main>
+ 
+ </body>
+</html>

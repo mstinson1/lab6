@@ -1,0 +1,24 @@
+<%- include("partials/header.ejs") %>
+<%- include("partials/nav.ejs") %>
+<body>
+  <main>
+    <div class="pageCard">
+    <h1> Update/Delete Quotes </h1>
+    <hr>
+
+    <% for (i=0; i < quotes.length; i++) { %>
+      <a href="/quote/edit?quoteId=<%=quotes[i].quoteId%>" class="edit-icon">
+        <i class="fa fa-pencil"></i>
+      </a>
+
+      <a href="/quote/delete?quoteId=<%=quotes[i].quoteId%>" class="delete-icon">
+        <i class="fa fa-times-circle"></i>
+      </a>
+
+      <%=quotes[i].quote%>
+      -<%=quotes[i].firstName%> <%=quotes[i].lastName%><br>
+    <% } %>
+    </div>
+    <%- include("partials/footer.ejs") %>
+  </main>
+</body>

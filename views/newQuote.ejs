@@ -1,0 +1,36 @@
+<%- include("partials/header.ejs") %>
+<%- include("partials/nav.ejs") %>
+<main>
+    <div class="pageCard">
+    <h1>Adding a New Quote</h1>
+    <hr>
+
+        <% if (typeof message != "undefined"){ %>
+                <h3><%=message%></h3>
+        <% } %>
+
+    <form method="POST" action="/quote/new" class="formSimple">
+        Quote:
+        <textarea name="quote"></textarea><br>
+
+        Author:
+        <select name="authorId">
+            <% for (let i = 0; i < authors.length; i++) { %>
+                <option value="<%= authors[i].authorId %>">
+                <%= authors[i].firstName %> <%= authors[i].lastName %>
+                </option>
+            <% } %>
+        </select><br>
+
+        Category:
+        <input type="text" name="category"><br>
+
+        Likes:
+        <input type="number" name="likes"><br>
+
+        <button>Add Quote</button>
+
+    </form>
+    </div>
+    <%- include("partials/footer.ejs") %>
+</main>

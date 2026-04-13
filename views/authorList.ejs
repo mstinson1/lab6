@@ -1,0 +1,27 @@
+<%- include("partials/header.ejs") %>
+<%- include("partials/nav.ejs") %>
+<body>
+  <main>
+    <div class="pageCard">
+      <h1> Update/Delete Authors </h1>
+      <hr>
+
+      <% for (i=0; i < authors.length; i++) { %>
+
+        <a href="/author/edit?authorId=<%=authors[i].authorId%>" class="edit-icon">
+          <i class="fa fa-pencil"></i>
+        </a>
+
+
+        <a href="/author/delete?authorId=<%=authors[i].authorId%>" class="delete-icon">
+          <i class="fa fa-times-circle"></i>
+        </a>
+
+        <%=authors[i].firstName%>
+        <%=authors[i].lastName%> <br>
+
+      <% } %>
+    </div>
+    <%- include("partials/footer.ejs") %>
+  </main>
+</body>
